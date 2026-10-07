@@ -1,6 +1,8 @@
-- name: Playbook de prueba local
-  hosts: servidores_locales
+---
+- name: Probar y listar dispositivos desde NetBox
+  hosts: all
+  gather_facts: false
   tasks:
-    - name: Mostrar un mensaje informativo
+    - name: Mostrar el nombre y datos básicos del host detectado
       ansible.builtin.debug:
-        msg: "Hola desde Ansible. El servidor está siendo configurado correctamente."
+        msg: "Dispositivo encontrado: {{ inventory_hostname }} con IP: {{ ansible_host | default('Sin IP registrada') }}"
