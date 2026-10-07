@@ -1,0 +1,6 @@
+- name: Playbook de prueba local
+  hosts: servidores_locales
+  tasks:
+    - name: Mostrar un mensaje informativo
+      ansible.builtin.debug:
+        msg: "Hola desde Ansible. El servidor está siendo configurado correctamente."

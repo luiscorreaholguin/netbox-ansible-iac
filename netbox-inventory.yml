@@ -1,0 +1,15 @@
+plugin: netbox.netbox.nb_inventory
+api_endpoint: http://localhost:8000
+token: "nbt_6TWyLT6WOizx.n4mczWUVRFvRgMzXJor9drVDyAWEWGPOZhWDEf1w"
+validate_certs: false
+
+# Filtros opcionales para traer solo dispositivos activos
+compose:
+  ansible_host: primary_ip.address | ipaddr('address')
+
+# Agrupa automáticamente los dispositivos según su rol, sitio o plataforma en NetBox
+keyed_groups:
+  - prefix: netbox_role
+    key: role.slug
+  - prefix: netbox_site
+    key: site.slug
